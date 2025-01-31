@@ -10,25 +10,23 @@ Before you begin, ensure you have the following installed:
 - **JavaFX SDK**: Download the appropriate JavaFX SDK for your operating system from [Gluon's website](https://gluonhq.com/products/javafx/).
 - **PowerShell**: Version 7.5.0 or higher (or any terminal/command prompt).
 
----
-
 ## Setup
 
 1. **Download and Extract JavaFX SDK**:
    - Download the JavaFX SDK from [Gluon's website](https://gluonhq.com/products/javafx/).
    - Extract the SDK to a desired location on your system. For example:
-     ```
-     C:\javafx-sdk-17.0.14
-     ```
+
+```powershell
+C:\javafx-sdk-17.0.14
+```
 
 2. **Set Environment Variable**:
    - Set an environment variable `PATH_TO_FX` pointing to the `lib` directory of the JavaFX SDK. In PowerShell, run:
-     ```powershell
-     $env:PATH_TO_FX = "C:\javafx-sdk-17.0.14\lib"
-     ```
-   - This variable will be used to specify the module path when compiling and running the JavaFX application.
 
----
+```powershell
+$env:PATH_TO_FX = "C:\javafx-sdk-17.0.14\lib"
+```
+   - This variable will be used to specify the module path when compiling and running the JavaFX application.
 
 ## Compile and Run the Application
 
@@ -42,9 +40,10 @@ javac --module-path $env:PATH_TO_FX --add-modules javafx.controls HelloFX.java
 
 - **`--module-path`**: Specifies the path to the JavaFX SDK's `lib` directory.
 - **`--add-modules`**: Adds the required JavaFX modules. In this case, `javafx.controls` is sufficient for basic applications. If your application uses FXML, you will need to add `javafx.fxml` as well:
-  ```powershell
-  javac --module-path $env:PATH_TO_FX --add-modules javafx.controls,javafx.fxml HelloFX.java
-  ```
+
+```powershell
+javac --module-path $env:PATH_TO_FX --add-modules javafx.controls,javafx.fxml HelloFX.java
+```
 
 ### Run the Application
 
@@ -56,7 +55,6 @@ java --module-path $env:PATH_TO_FX --add-modules javafx.controls HelloFX
 
 - This command runs the compiled `HelloFX` class with the JavaFX runtime.
 
----
 
 ## Troubleshooting
 
@@ -74,15 +72,11 @@ java --module-path $env:PATH_TO_FX --add-modules javafx.controls HelloFX
 4. **Class Not Found**:
    - Ensure that the `HelloFX.class` file is in the same directory as your command prompt or PowerShell session, or specify the correct path to the class file.
 
----
-
 ## Additional Resources
 
 - [JavaFX Documentation](https://openjfx.io/)
 - [Gluon JavaFX SDK Downloads](https://gluonhq.com/products/javafx/)
 - [JavaFX GitHub Samples](https://github.com/openjfx/samples)
-
----
 
 ## License
 
