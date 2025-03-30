@@ -26,7 +26,15 @@ C:\javafx-sdk-17.0.14
 ```powershell
 $env:PATH_TO_FX = "C:\javafx-sdk-17.0.14\lib"
 ```
-   - This variable will be used to specify the module path when compiling and running the JavaFX application.
+   - **Important**: Make sure to include `\lib` at the end of the path.
+   - You need to set this variable in each new PowerShell session, or add it to your PowerShell profile for persistence.
+   - To verify the variable is set correctly, you can run:
+
+```powershell
+echo $env:PATH_TO_FX
+```
+
+   - This should display the full path to your JavaFX lib directory.
 
 ## Compile and Run the Application
 
@@ -60,14 +68,27 @@ java --module-path $env:PATH_TO_FX --add-modules javafx.controls HelloFX
 
 ### Common Issues
 
-1. **Java Version Mismatch**:
+1. **"Module not found: javafx.controls" Error**:
+   - This error typically occurs when the `PATH_TO_FX` environment variable is not set correctly.
+   - Solution:
+     - Ensure you've set the environment variable in the current PowerShell session:
+       ```powershell
+       $env:PATH_TO_FX = "C:\javafx-sdk-17.0.14\lib"
+       ```
+     - Check that the path is correct and points to the `lib` directory
+     - Verify the variable is set correctly by running `echo $env:PATH_TO_FX`
+     - Make sure the JavaFX SDK is actually installed at the specified location
+
+2. **Java Version Mismatch**:
    - Ensure that the JDK version matches the JavaFX SDK version. For example, if you are using JavaFX 17, make sure you have JDK 17 installed.
 
-2. **Module Not Found**:
-   - If you encounter errors like `module not found`, ensure that the `--add-modules` flag includes all necessary modules (e.g., `javafx.controls`, `javafx.fxml`).
-
 3. **Environment Variable Not Set**:
-   - If the `PATH_TO_FX` environment variable is not set correctly, the compilation or runtime will fail. Double-check the path and ensure it points to the `lib` directory of the JavaFX SDK.
+   - Remember that PowerShell environment variables are session-specific. If you close PowerShell and open it again, you'll need to set the `PATH_TO_FX` variable again.
+   - To make the setting permanent, you can add it to your PowerShell profile:
+     ```powershell
+     notepad $PROFILE
+     ```
+     Add the line `$env:PATH_TO_FX = "C:\javafx-sdk-17.0.14\lib"` to the profile file.
 
 4. **Class Not Found**:
    - Ensure that the `HelloFX.class` file is in the same directory as your command prompt or PowerShell session, or specify the correct path to the class file.
